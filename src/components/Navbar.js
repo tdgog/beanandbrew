@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,  } from 'react';
 import {
     AppBar,
     Box,
@@ -13,14 +13,23 @@ import {
     MenuItem,
 } from '@mui/material';
 import {
-    Adb as AdbIcon,
     Menu as MenuIcon
 } from '@mui/icons-material'
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const pages = ['Home', 'Coffee shops', 'Restaurants', 'Bakery lessons', 'Takeaway'];
 const settings = ['Profile', 'Account', 'Logout'];
+const navigateRelations = {
+    'Home': '',
+    'Coffee shops': 'shops', 
+    'Restaurants': 'restaurants', 
+    'Bakery lessons': 'lessons', 
+    'Takeaway': 'takeaway'
+}
 
 function SmallScreenMenu({ handleOpenNavigationMenu, handleCloseNavigationMenu, anchorElNavigation }) {
+    let navigate = useNavigate();
+    
     return <Box className='flex md:hidden' sx={{ flexGrow: 1 }}>
         <IconButton
             size="large"
@@ -51,7 +60,10 @@ function SmallScreenMenu({ handleOpenNavigationMenu, handleCloseNavigationMenu, 
             }}
         >
             {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavigationMenu}>
+                <MenuItem key={page} onClick={() => {
+                    handleCloseNavigationMenu();
+                    navigate(navigateRelations[page]);
+                }}>
                     <Typography textAlign="center">{page}</Typography>
                 </MenuItem>
             ))}
@@ -60,14 +72,23 @@ function SmallScreenMenu({ handleOpenNavigationMenu, handleCloseNavigationMenu, 
 }
 
 function LargeScreenMenu({ handleCloseNavigationMenu }) {
+    let navigate = useNavigate();
+    let location = useLocation();
+    let currentPath = location.pathname;
+
     return <Box className='hidden md:flex' sx={{ flexGrow: 1 }}>
         {pages.map((page) => (
             <Button
                 key={page}
-                onClick={handleCloseNavigationMenu}
+                onClick={() => {
+                    handleCloseNavigationMenu();
+                    navigate(navigateRelations[page]);
+                }}
                 sx={{
                     my: 2,
-                    color: 'white',
+                    color: currentPath.substring(1) === navigateRelations[page] 
+                        ? 'white' 
+                        : '#ccc',
                     display: 'block'
                 }}
             >
