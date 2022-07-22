@@ -13,7 +13,11 @@ module.exports = {
     backgroundImage: {
       'coffee-mug': "url('../public/Background.png')"
     },
-    extend: {},
+    extend: {
+      spacing: {
+        '104': '26rem'
+      }
+    },
   },
   plugins: [],
 }

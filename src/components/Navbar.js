@@ -133,10 +133,10 @@ function AccountButton({ handleOpenUserMenu, handleCloseUserMenu, anchorElUser }
 function Logo({ isLargeScreen }) {
     return isLargeScreen 
         ? <div className='hidden md:flex'>
-            <img src='/Logo_white.png' className='h-10' />
+            <img src='/Logo_white.png' className='h-10' alt='Logo' />
         </div> 
         : <Box className='flex md:hidden' sx={{ flexGrow: 1 }}>
-            <img src='/Logo_white.png' className='h-10' />
+            <img src='/Logo_white.png' className='h-10' alt='Logo' />
         </Box>
 }
 
@@ -144,8 +144,8 @@ export default function Navbar() {
     const [anchorElNavigation, setAnchorElNavigation] = useState(null);
     const [anchorElUser, setAnchorElUser] = useState(null);
 
-    return <AppBar position="static">
-        <Container maxWidth="xl" className='bg-dgray'>
+    return <AppBar position="fixed">
+        <Container maxWidth="xl" className='bg-dgray w-screen'>
             <Toolbar disableGutters>
                 <Logo isLargeScreen />
                 <SmallScreenMenu
