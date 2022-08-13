@@ -4,19 +4,19 @@ import React, { useState } from 'react';
 function Allergens({ size, allergens }) {
     return <>
         <div className='flex flex-row'>
-            {allergens.mayContain.map((allergen) => {
+            {allergens.mayContain.map((allergen, key) => {
                 const path = `/allergens/${allergen}/PNG/${allergen}_amber_${size}x${size}.png`;
 
-                return <Tooltip title={`May contain ${allergen}`}>
+                return <Tooltip key={key} title={`May contain ${allergen}`}>
                     <img src={path} alt={`May contain ${allergen}`} className='h-10' />
                 </Tooltip>
             })}
         </div>
         <div className='flex flex-row'>
-            {allergens.contains.map((allergen) => {
+            {allergens.contains.map((allergen, key) => {
                 const path = `/allergens/${allergen}/PNG/${allergen}_red_${size}x${size}.png`;
 
-                return <Tooltip title={`Contains ${allergen}`}>
+                return <Tooltip key={key} title={`Contains ${allergen}`}>
                     <img src={path} alt={`Contains ${allergen}`} className='h-10' />
                 </Tooltip>
             })}
@@ -27,10 +27,6 @@ function Allergens({ size, allergens }) {
 function MenuCard({ image, name, description, calories, allergens, isVegan, isVegetarian }) {
     // Set variable to 'Vegan', 'Vegetarian', or '' depending on the product's suitability
     const suitability = isVegan ? 'Vegan' : (isVegetarian ? 'Vegetarian' : '');
-
-    // Cutoff description if it's too long
-    const reducedDescription = description.substr(0, 120);
-    const descDots = reducedDescription === description ? '' : '...';
 
     // Cutoff name if it's too long
     const reducedName = name.substr(0, 13);
@@ -64,7 +60,12 @@ function MenuCard({ image, name, description, calories, allergens, isVegan, isVe
                 </Tooltip>}
             </div>
             <Typography color='white' variant='body1'>{calories} ckal / serving</Typography>
-            <Typography color='white' variant='body2'>{reducedDescription}{descDots}</Typography>
+            <Typography color='white' variant='body2' sx={{
+                display: '-webkit-box',
+                overflow: 'hidden',
+                WebkitBoxOrient: 'vertical',
+                WebkitLineClamp: 6
+            }}>{description}</Typography>
             {/* TODO: Make background colour dgray (#282c34) */}
             <Popover
                 id={id}
@@ -77,7 +78,7 @@ function MenuCard({ image, name, description, calories, allergens, isVegan, isVe
                 }}
             >
                 <Typography className='p-2' variant='body1'>{name}</Typography>
-                {chunks.map((chunk) => <Typography className='px-2' variant='body2'>{chunk}</Typography>)}
+                {chunks.map((chunk, key) => <Typography key={key} className='px-2' variant='body2'>{chunk}</Typography>)}
             </Popover>
 
             <div className='flex flex-col grow justify-end'>
@@ -106,67 +107,10 @@ function MenuCard({ image, name, description, calories, allergens, isVegan, isVe
     </Card>
 }
 
-const ITEMS = [
-    {
-        image: 'https://wallpaperaccess.com/full/5025367.jpg',
-        name: 'Lorem ipsum',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-        calories: 250,
-        allergens: {
-            mayContain: [
-                'soya',
-                'sulphurdioxide'
-            ],
-            contains: [
-                'milk',
-                'molluscs',
-                'celery'
-            ]
-        },
-        isVegan: true,
-        isVegetarian: true,
-    },
-    {
-        image: 'https://wallpaperaccess.com/full/5025367.jpg',
-        name: 'Shortened ipsum',
-        description: 'Lorem ipsum dolor sit amet.',
-        calories: 250,
-        allergens: {
-            mayContain: [
-                'soya',
-                'sulphurdioxide'
-            ],
-            contains: [
-                'milk',
-                'molluscs',
-                'celery'
-            ]
-        },
-        isVegan: false,
-        isVegetarian: false,
-    },
-    {
-        image: 'https://wallpaperaccess.com/full/5025367.jpg',
-        name: 'Lorem ipsum but long',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-        calories: 250,
-        allergens: {
-            mayContain: [
-
-            ],
-            contains: [
-
-            ]
-        },
-        isVegan: true,
-        isVegetarian: true,
-    },
-]
-
 export default function Menu({ items }) {
-    return <div className='flex flex-row flex-wrap justify-between'>
-        {ITEMS.map((item) =>
-            <div className='mx-2 my-2'><MenuCard
+    return <div className='flex flex-row flex-wrap'>
+        {items.map((item, key) =>
+            <div key={key} className='mx-2 my-2'><MenuCard
                 image={item.image}
                 name={item.name}
                 description={item.description}

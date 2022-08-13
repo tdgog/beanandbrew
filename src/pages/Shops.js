@@ -2,6 +2,17 @@ import { Typography } from "@mui/material";
 import React from 'react';
 import Map from "../components/GoogleMaps";
 import Menu from "../components/Menu";
+import Products from '../data/Products';
+
+function GetMenuItems(location, category) {
+    let applicableItems = [];
+    for (const product of Products) {
+        if (product.availability.includes(location) && product.type === category) {
+            applicableItems.push(product);
+        }
+    }
+    return applicableItems
+}
 
 export default function Shops() {
     return <div className="h-full w-full bg-coffee-mug bg-cover bg-fixed p-5 pt-20">
@@ -10,6 +21,7 @@ export default function Shops() {
         <Map />
 
         <Typography color='white' variant='h2'>In Store Menu</Typography>
-        <Menu />
+        <Menu items={GetMenuItems('shop', 'drink')} />
+        <Menu items={GetMenuItems('shop', 'food')} />
     </div>
 }
