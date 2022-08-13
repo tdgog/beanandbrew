@@ -1,26 +1,100 @@
 
-import { Typography } from "@mui/material";
+import { Card, Typography, CardMedia, CardContent, CardActions } from "@mui/material";
+import { LoadingButton } from '@mui/lab';
 import React, { useState } from 'react';
 import Slider from "react-slick";
 import { FaArrowRight, FaArrowLeft } from 'react-icons/fa';
-{/* <Carousel>
-    <img src="/image1.png" />
-    <img src="/image2.png" />
-</Carousel> */}
-// import Carousel from "nuka-carousel/lib/carousel";
+import DoneIcon from '@mui/icons-material/Done';
+
+function LessonCard({ lesson, index, setLessonIndex, lessonIndex }) {
+    const [processing, setProcessing] = useState('notProcessed');
+
+    const standard = 'w-72 m-0 duration-300';
+    return <div className={index === lessonIndex
+        ? standard
+        : `${standard} scale-75 opacity-50`
+    }>
+        <Card>
+            <CardMedia
+                component='img'
+                sx={{ height: '10rem' }}
+                image={lesson.image}
+                alt={lesson.name}
+            />
+            <CardContent className='bg-dgray flex flex-col' sx={{ height: '10rem' }}>
+                <div className='flex flex-row content-center'>
+                    <Typography
+                        color='white'
+                        variant='h5'
+                        component='div'
+                        className='flex flex-grow'
+                    >
+                        {lesson.name}
+                    </Typography>
+                    <Typography
+                        color='gray'
+                        variant='h5'
+                        component='div'
+                        className=''
+                    >£{lesson.price}</Typography>
+                </div>
+                <Typography
+                    color='white'
+                    variant='body1'
+                    component='div'
+                >
+                    {lesson.description}
+                </Typography>
+            </CardContent>
+            <CardActions className='bg-dgray flex justify-center content-top'>
+                {/* TODO: add custom styling to make this always white even if disabled/processing */}
+                <LoadingButton
+                    size="small"
+                    sx={{
+                        color: 'white'
+                    }}
+                    onClick={(event) => {
+                        if (index !== lessonIndex || processing !== 'notProcessed') return
+                        setProcessing('processing');
+                        setTimeout(() => {
+                            setProcessing('processed');
+                        }, 2000)
+                    }}
+                    loading={processing === 'processing'}
+                >{processing === 'processed' ? <DoneIcon /> : 'purchase'}</LoadingButton>
+            </CardActions>
+        </Card>
+    </div>
+}
 
 export default function Lessons() {
-    const prefix = 'https://raw.githubusercontent.com/HatScripts/circle-flags/414b51b671957b8f1c1ccbe5367c0b7e7b525249/flags/'
-    const images = [
-        `${prefix}ca.svg`,
-        `${prefix}de.svg`,
-        `${prefix}gb-con.svg`,
-        `${prefix}gb-eng.svg`,
-        `${prefix}gb-nir.svg`,
-        `${prefix}gb-ork.svg`,
-        `${prefix}gb-sct.svg`,
-        `${prefix}gb-wls.svg`,
-        `${prefix}gb.svg`,
+    // TODO: add descriptions
+    // TODO: local images
+    const lessontypes = [
+        {
+            name: 'Perfecting Pizza',
+            description: '',
+            price: '80',
+            image: 'https://twomagpiesbakery.co.uk/wp-content/uploads/2020/10/greenman.jpg'
+        },
+        {
+            name: 'Bread Basics',
+            description: '',
+            price: '95',
+            image: 'https://cdn.shopify.com/s/files/1/1165/4656/products/Beginner_Bread_Making_5000x.jpg?v=1462957625'
+        },
+        {
+            name: 'Croissant Creation',
+            description: '',
+            price: '62',
+            image: 'https://www.breadahead.com/wp/wp-content/uploads/online-baking-banner-4-1.png'
+        },
+        {
+            name: 'Eclair Essentials',
+            description: '',
+            price: '73',
+            image: 'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/chocolate-eclairs-1603280323.jpg?crop=1.00xw:0.335xh;0,0.220xh&resize=1200:*'
+        }
     ]
 
     const arrowCss = 'absolute cursor-pointer z-10 top-1/2 text-white hover:text-lsg duration-300';
@@ -35,7 +109,7 @@ export default function Lessons() {
         </div>
     }
 
-    const [imageIndex, setImageIndex] = useState(0);
+    const [lessonIndex, setLessonIndex] = useState(0);
 
     return <div className="h-screen w-screen bg-coffee-mug bg-cover bg-fixed p-5 pt-20">
         <Typography color='white' variant='h2'>Learn to Bake</Typography>
@@ -48,17 +122,16 @@ export default function Lessons() {
                     centerPadding={0}
                     nextArrow={<NextArrow />}
                     prevArrow={<PrevArrow />}
-                    beforeChange={(_, next) => setImageIndex(next)}
+                    beforeChange={(_, next) => setLessonIndex(next)}
                 >
-                    {images.map((image, index) => {
-                        const standard = 'w-80 m-0 scale-50 opacity-50 duration-300';
-                        return <div className={index === imageIndex
-                                    ? `${standard} scale-100 opacity-100`
-                                    : standard
-                        }>
-                            <img src={image} alt={image} />
-                        </div>
-                    })}
+                    {lessontypes.map((lesson, index) => 
+                        <LessonCard 
+                            lesson={lesson}
+                            index={index}
+                            setLessonIndex={setLessonIndex}
+                            lessonIndex={lessonIndex}
+                        />
+                    )}
                 </Slider>
             </div>
         </div>
