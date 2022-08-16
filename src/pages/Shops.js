@@ -15,7 +15,7 @@ function GetMenuItems(location, category) {
 }
 
 export default function Shops() {
-    return <div className="h-full w-full bg-coffee-mug bg-cover bg-fixed p-5 pt-20">
+    return <div className="h-screen w-screen bg-background bg-cover bg-fixed p-5 pt-20">
         <Typography color='white' variant='h2'>Our Locations</Typography>
         <Typography color='white' variant='h6'>Where are your local Bean and Brew coffee shops?</Typography>
         <Map />

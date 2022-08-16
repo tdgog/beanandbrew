@@ -1,6 +1,7 @@
 import { Typography } from "@mui/material";
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import Typewriter from "../utils/Typewriter";
 
 function Card(props){
     let navigate = useNavigate();
@@ -17,12 +18,14 @@ function Card(props){
     </div>
 }
 
+const endings = ['local', 'fresh', 'Bean + Brew'];
+
 export default function Home(){
-    return <div className="h-screen w-screen bg-coffee-mug bg-cover bg-fixed p-5 pt-20">
+    return <div className="h-screen w-screen bg-background bg-cover bg-fixed p-5 pt-20">
         <Typography color='white' variant='h2'>Bean and Brew</Typography>
-        <div className='h-30 w-full'>
-            <Typography display='inline' color='#03b5aa' variant='h5'>This:</Typography>
-            <Typography display='inline' color='white' variant='h5'> is a placeholder tagline</Typography>
+        <div className='flex h-30 w-full'>
+            <Typography display='inline' color='white' variant='h5' sx={{ marginRight: 1 }}>Coffee is better when it's</Typography>
+            <Typewriter display='inline' color='#03b5aa' variant='h5'>{endings}</Typewriter>
         </div>
         <br />
         <div className='h-cardheight w-cardwidth mt-24 grid grid-cols-2 gap-2'>

@@ -17,6 +17,7 @@ module.exports = {
     },
     backgroundImage: {
       'coffee-mug': "url('../public/Background.png')",
+      'background': "url('../public/Background_Darkened.jpg')",
       'coffee-shop': "url('https://blog-assets.lightspeedhq.com/img/2021/03/b26bcdcf-blog_coffee-shop-equipment-list_1200x628.jpg')",
       'restaurant': "url('https://upload.wikimedia.org/wikipedia/commons/e/ef/Restaurant_N%C3%A4sinneula.jpg')",
       'baking-lesson': "url('https://www.thespruceeats.com/thmb/YSLBSA1fSmr24-ka_7cclvHzqUw=/2119x1414/filters:fill(auto,1)/GettyImages-1129093553-2e6ea9c69306471e8a00a00487588387.jpg')",
@@ -31,6 +32,19 @@ module.exports = {
         'cardwidth': '50rem',
         'cardheight': '20rem',
       },
+      animation: {
+        'in-out': 'fade .8s linear infinite'
+      },
+      keyframes: {
+        'fade': {
+          '0%, 50%': {
+            opacity: 1,
+          },
+          '51%, 100%': {
+            opacity: 0,
+          }
+        }
+      }
     },
   },
   plugins: [],
