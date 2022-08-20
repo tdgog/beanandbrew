@@ -17,7 +17,7 @@ import {
 } from '@mui/icons-material'
 import { useNavigate, useLocation } from 'react-router-dom';
 
-const pages = ['Home', 'Coffee shops', 'Restaurants', 'Bakery lessons', 'Takeaway'];
+const pages = ['Home', 'Coffee shops', /*'Restaurants',*/ 'Bakery lessons', 'Takeaway'];
 const settings = ['Profile', 'Account', 'Logout'];
 const navigateRelations = {
     'Home': '',
@@ -144,7 +144,7 @@ export default function Navbar() {
     const [anchorElNavigation, setAnchorElNavigation] = useState(null);
     const [anchorElUser, setAnchorElUser] = useState(null);
 
-    return <AppBar position="fixed">
+    return <AppBar position="fixed" sx={{ backgroundColor: '#282c34' }} > 
         <Container maxWidth="xl" className='bg-dgray w-screen'>
             <Toolbar disableGutters>
                 <Logo isLargeScreen />

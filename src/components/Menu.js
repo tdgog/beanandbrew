@@ -108,7 +108,7 @@ function MenuCard({ image, name, description, calories, allergens, isVegan, isVe
 }
 
 export default function Menu({ items }) {
-    return <div className='flex flex-row flex-wrap'>
+    return <div className='flex flex-row flex-wrap w-full'>
         {items.map((item, key) =>
             <div key={key} className='mx-2 my-2'><MenuCard
                 image={item.image}

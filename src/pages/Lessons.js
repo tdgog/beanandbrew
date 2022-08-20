@@ -1,10 +1,8 @@
-
 import { Card, Typography, CardMedia, CardContent, CardActions } from "@mui/material";
 import { LoadingButton } from '@mui/lab';
 import React, { useState } from 'react';
-import Slider from "react-slick";
-import { FaArrowRight, FaArrowLeft } from 'react-icons/fa';
 import DoneIcon from '@mui/icons-material/Done';
+import Slider from '../components/Slider';
 
 function LessonCard({ lesson, index, setLessonIndex, lessonIndex }) {
     const [processing, setProcessing] = useState('notProcessed');
@@ -114,18 +112,6 @@ export default function Lessons() {
         }
     ]
 
-    const arrowCss = 'absolute cursor-pointer z-10 top-1/2 text-white hover:text-lsg duration-300';
-    const NextArrow = ({ onClick }) => {
-        return <div className={`${arrowCss} right-0`} onClick={onClick}>
-            <FaArrowRight />
-        </div>
-    }
-    const PrevArrow = ({ onClick }) => {
-        return <div className={`${arrowCss} left-0`} onClick={onClick}>
-            <FaArrowLeft />
-        </div>
-    }
-
     const [lessonIndex, setLessonIndex] = useState(0);
 
     // THe
@@ -139,15 +125,7 @@ export default function Lessons() {
         {pagecontentArray.map(desc => <Typography color='white' variant='h6'>{desc}</Typography>)}
         <div className='mt-4 flex justify-center'>
             <div className='w-208'>
-                <Slider
-                    infinite lazyLoad centerMode
-                    speed={300}
-                    slidesToShow={3}
-                    centerPadding={0}
-                    nextArrow={<NextArrow />}
-                    prevArrow={<PrevArrow />}
-                    beforeChange={(_, next) => setLessonIndex(next)}
-                >
+                <Slider setIndex={setLessonIndex}>
                     {lessontypes.map((lesson, index) => 
                         <LessonCard 
                             lesson={lesson}
