@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/beanandbrew/static/css/main.b434d15d.css",
-    "main.js": "/beanandbrew/static/js/main.eb8534ae.js",
+    "main.js": "/beanandbrew/static/js/main.ae567fda.js",
     "static/js/787.26bb515c.chunk.js": "/beanandbrew/static/js/787.26bb515c.chunk.js",
     "static/media/Background_Darkened.jpg": "/beanandbrew/static/media/Background_Darkened.75e12e628c836e2475b3.jpg",
     "static/media/slick.svg": "/beanandbrew/static/media/slick.2630a3e3eab21c607e21.svg",
@@ -10,11 +10,11 @@
     "static/media/slick.woff": "/beanandbrew/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/beanandbrew/index.html",
     "main.b434d15d.css.map": "/beanandbrew/static/css/main.b434d15d.css.map",
-    "main.eb8534ae.js.map": "/beanandbrew/static/js/main.eb8534ae.js.map",
+    "main.ae567fda.js.map": "/beanandbrew/static/js/main.ae567fda.js.map",
     "787.26bb515c.chunk.js.map": "/beanandbrew/static/js/787.26bb515c.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.b434d15d.css",
-    "static/js/main.eb8534ae.js"
+    "static/js/main.ae567fda.js"
   ]
 }
