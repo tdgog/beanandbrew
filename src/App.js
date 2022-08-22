@@ -21,17 +21,17 @@ function App() {
             <div>
                 <Navbar />
                 <Routes>
-                    <Route path="/beanandbrew/" element={<Home />} />
-                    <Route path="/beanandbrew/shops" element={<Shops />} />
-                    <Route path="/beanandbrew/restaurants" element={<Restaurants />} />
-                    <Route path="/beanandbrew/lessons" element={<Lessons />} />
-                    <Route path="/beanandbrew/takeaway" element={<Takeaway />} />
+                    <Route path="/" element={<Home />} />
+                    <Route path="/shops" element={<Shops />} />
+                    <Route path="/restaurants" element={<Restaurants />} />
+                    <Route path="/lessons" element={<Lessons />} />
+                    <Route path="/takeaway" element={<Takeaway />} />
 
                     {/* External URL Redirects 
                         Pass the encoded URL as a parameter in the <Link /> component:
                         <Link to={`redirect/${encodeURIComponent('url')}`} />
                     */}
-                    <Route path='/beanandbrew/redirect/:url' element={<Redirect />} />
+                    <Route path='/redirect/:url' element={<Redirect />} />
                 </Routes>
             </div>
         </BrowserRouter>
