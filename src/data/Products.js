@@ -58,8 +58,8 @@ export default [
     {
         image: 'https://tasteandglory.co.uk/wp-content/uploads/2021/09/lo-res_TG_LS21-248-e1631114547630-700x525.jpg',
         name: 'Ham and Cheddar Toastie',
-        description: 'sus',
-        calories: 434,
+        description: 'British ham and mature cheddar cheese on white bread',
+        calories: 140,
         allergens: {
             mayContain: [  ],
             contains: [ 'wheat', 'milk', 'mustard' ]
@@ -70,17 +70,59 @@ export default [
         type: 'food'
     },
     {
-        image: '',
-        name: '',
-        description: '',
-        calories: 0,
+        image: 'https://www.seasonsandsuppers.ca/wp-content/uploads/2017/07/pressed-picnic-sandwiches-4-3.jpg',
+        name: 'Pressed Sandwich',
+        description: 'Ciabatta loaf with your choice of mozzarella, spinach, peppers, and various other meats and vegetables.',
+        calories: 145,
         allergens: {
             mayContain: [  ],
-            contains: [  ]
+            contains: [ 'wheat' ]
         },
-        isVegan: false,
+        isVegan: true,
         isVegetarian: false,
-        availability: [  ],
-        type: ''
+        availability: [ 'shop' ],
+        type: 'food'
+    },
+    {
+        image: 'https://insanelygoodrecipes.com/wp-content/uploads/2022/04/Oatmeal-Porridge-with-Nuts-and-Blueberries-in-a-Blue-Bowl.jpg',
+        name: 'Porridge',
+        description: 'Fresh porridge with fruits and nuts of your choosing, served warm',
+        calories: 80,
+        allergens: {
+            mayContain: [ 'wheat' ],
+            contains: [ 'milk' ]
+        },
+        isVegan: true,
+        isVegetarian: false,
+        availability: [ 'shop' ],
+        type: 'food'
+    },
+    {
+        image: 'https://hips.hearstapps.com/hmg-prod/images/delish-how-to-make-a-smoothie-horizontal-1542310071.png',
+        name: 'Fruit smoothie',
+        description: 'Banana, strawberry, blueberry, or raspberry flavoured smoothies made fresh before serving.',
+        calories: 200,
+        allergens: {
+            mayContain: [  ],
+            contains: [ 'milk' ]
+        },
+        isVegan: true,
+        isVegetarian: false,
+        availability: [ 'shop' ],
+        type: 'drink'
+    },
+    {
+        image: 'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/delish-pumpkin-spice-latte-horizontal-1530373970.jpg?crop=1.00xw:0.752xh;0,0.0721xh&resize=1200:*',
+        name: 'Pumpkin Spice Latte',
+        description: 'Espresso and steamed milk with pumpkin, cinnamon, nutmeg, and clove flavourings.',
+        calories: 244,
+        allergens: {
+            mayContain: [  ],
+            contains: [ 'milk' ]
+        },
+        isVegan: true,
+        isVegetarian: false,
+        availability: [ 'shop' ],
+        type: 'drink'
     },
 ]
