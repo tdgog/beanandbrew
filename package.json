@@ -1,6 +1,7 @@
 {
   "name": "beanandbrew",
   "version": "0.1.0",
+  "homepage": "https://tdgog.github.io/bean-and-brew",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.9.3",
