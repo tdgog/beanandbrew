@@ -19,9 +19,10 @@ function Card(props){
 export default function Takeaway(){
     return <div className="h-screen w-screen bg-background bg-cover bg-fixed p-5 pt-20">
         <Typography color='white' variant='h2'>Takeaways</Typography>
-        <Typography color='white' variant='h6'>Order Bean and Brew directly to your door with our trusted delivery partners</Typography>
+        <Typography color='white' variant='h6'>All of our products are available for takeaway, just ask in store</Typography>
+        <Typography color='white' variant='h6'>Alternatively, order Bean and Brew directly to your door with our trusted delivery partners</Typography>
 
-        <div className='h-cardheight w-cardwidth mt-10 grid grid-cols-2 gap-2'>
+        <div className='h-cardheight w-cardwidth mt-5 grid grid-cols-2 gap-2'>
             <Card 
                 image='./DeliveryCompanies/Deliveroo.png'
                 color='bg-[#00CDBC]' 
